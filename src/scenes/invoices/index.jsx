@@ -1,16 +1,15 @@
-import { Box } from "@mui/material";
+import { Box, useTheme, Typography } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+import { mockDataInvoices } from "../../data/mockData";
 import Header from "../../components/Header";
-import { useTheme } from "@mui/material";
 
-const Contacts = () => {
+const Invoices = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "registrarId", headerName: "Registrar ID" },
+
     {
       field: "name",
       headerName: "Name",
@@ -18,8 +17,13 @@ const Contacts = () => {
       cellClassName: "name-column--cell",
     },
     {
-      field: "age",
-      headerName: "Age",
+      field: "email",
+      headerName: "Email",
+      flex: 1,
+    },
+    {
+      field: "cost",
+      headerName: "Cost",
       type: "number",
       headerAlign: "left",
       align: "left",
@@ -30,23 +34,8 @@ const Contacts = () => {
       flex: 1,
     },
     {
-      field: "email",
-      headerName: "Email",
-      flex: 1,
-    },
-    {
-      field: "address",
-      headerName: "Address",
-      flex: 1,
-    },
-    {
-      field: "city",
-      headerName: "City",
-      flex: 1,
-    },
-    {
-      field: "zipCode",
-      headerName: "ZipCode",
+      field: "date",
+      headerName: "date",
       flex: 1,
     },
   ];
@@ -54,8 +43,8 @@ const Contacts = () => {
   return (
     <Box m="20px">
       <Header
-        title="CONTACTS"
-        subtitle="List of Contacts for Futur Reference"
+        title="Invoices"
+        subtitle="List of Invoices"
       />
       <Box
         m="40px 0 0 0"
@@ -91,7 +80,7 @@ const Contacts = () => {
       >
         <DataGrid
           checkboxSelection
-          rows={mockDataContacts}
+          rows={mockDataInvoices}
           columns={columns}
           components={{ Toolbar: GridToolbar }}
         />
@@ -100,4 +89,4 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default Invoices;
